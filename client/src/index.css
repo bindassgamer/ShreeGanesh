@@ -1,0 +1,23 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.15), transparent 45%),
+    radial-gradient(circle at 20% 40%, rgba(52, 211, 153, 0.12), transparent 40%),
+    linear-gradient(120deg, #f8fafc, #f1f5f9 55%, #fff7ed);
+  color: #0f172a;
+}
+
+input, textarea, button {
+  font-family: inherit;
+}
