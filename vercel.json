@@ -1,18 +1,9 @@
 ﻿{
-  "version": 2,
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm --prefix client install --include=dev",
+  "buildCommand": "npm --prefix client run build",
+  "outputDirectory": "client/dist",
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
