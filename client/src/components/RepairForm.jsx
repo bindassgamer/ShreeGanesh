@@ -1,17 +1,20 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const initialState = {
   address: "",
   email: "",
   phone: "",
-  description: ""
+  brand: "",
+  description: "",
 };
 
 export default function RepairForm({ category }) {
   const [formData, setFormData] = useState(initialState);
   const [status, setStatus] = useState({ type: "idle", message: "" });
   const [loading, setLoading] = useState(false);
+  const apiBaseUrl =
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,12 +32,12 @@ export default function RepairForm({ category }) {
     setStatus({ type: "idle", message: "" });
 
     try {
-      const response = await fetch("/api/tickets", {
+      const response = await fetch(`${apiBaseUrl}/api/tickets`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, category })
+        body: JSON.stringify({ ...formData, category }),
       });
 
       const payload = await response.json();
@@ -44,13 +47,13 @@ export default function RepairForm({ category }) {
 
       setStatus({
         type: "success",
-        message: "Thanks! Your request is in. We will be back to you soon."
+        message: "Thanks! Your request is in. We will be back to you soon.",
       });
       setFormData(initialState);
     } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again."
+        message: error.message || "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -110,7 +113,19 @@ export default function RepairForm({ category }) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="+1 555 0142"
+            placeholder="+91 ****** ******"
+            className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-sunrise focus:outline-none focus:ring-2 focus:ring-sunrise/40"
+          />
+        </label>
+        <label className="text-sm font-medium text-slate-700">
+          Brand
+          <input
+            required
+            type="text"
+            name="brand"
+            value={formData.brand}
+            onChange={handleChange}
+            placeholder="Asus/Dell/HP/Lenovo"
             className="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-sunrise focus:outline-none focus:ring-2 focus:ring-sunrise/40"
           />
         </label>
