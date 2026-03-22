@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
+import CandidateCertificate from "./pages/CandidateCertificate.jsx";
 
 const linkClass = ({ isActive }) =>
   `relative text-sm font-medium transition hover:text-midnight ${
@@ -61,6 +62,19 @@ export default function App() {
                 transition={{ duration: 0.35 }}
               >
                 <About />
+              </motion.main>
+            }
+          />
+          <Route
+            path="/candidate/:id"
+            element={
+              <motion.main
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                <CandidateCertificate />
               </motion.main>
             }
           />
