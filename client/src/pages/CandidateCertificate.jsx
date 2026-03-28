@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-
-const apiBaseUrl = "https://shree-backend-eta.vercel.app"; // use for local run || "http://localhost:3000"
+import { apiFetch } from "../lib/api";
 
 export default function CandidateCertificate() {
   const { id } = useParams();
@@ -18,7 +17,7 @@ export default function CandidateCertificate() {
       month: "short",
       day: "2-digit",
       hour: "2-digit",
-      minute: "2-digit",
+      minute: "2-digit"
     });
   };
 
@@ -29,7 +28,7 @@ export default function CandidateCertificate() {
     { label: "Duration", value: candidate?.duration || "-" },
     { label: "Record ID", value: candidate?._id || "-" },
     { label: "Created", value: formatDateTime(candidate?.createdAt) },
-    { label: "Last Updated", value: formatDateTime(candidate?.updatedAt) },
+    { label: "Last Updated", value: formatDateTime(candidate?.updatedAt) }
   ];
 
   useEffect(() => {
@@ -39,13 +38,7 @@ export default function CandidateCertificate() {
       setStatus({ type: "loading", message: "" });
 
       try {
-        const response = await fetch(`${apiBaseUrl}/api/candidates/${id}`);
-        const payload = await response.json();
-
-        if (!response.ok) {
-          throw new Error(payload?.message || "Unable to fetch candidate.");
-        }
-
+        const payload = await apiFetch(`/api/candidates/${id}`);
         if (isActive) {
           setCandidate(payload);
           setStatus({ type: "success", message: "" });
@@ -178,3 +171,4 @@ export default function CandidateCertificate() {
     </div>
   );
 }
+

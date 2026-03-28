@@ -1,8 +1,12 @@
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { AnimatePresence, motion } from "framer-motion";
 import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import CandidateCertificate from "./pages/CandidateCertificate.jsx";
+import BookService from "./pages/BookService.jsx";
+import TrackBooking from "./pages/TrackBooking.jsx";
+import MyBookings from "./pages/MyBookings.jsx";
+import AuthCallback from "./pages/AuthCallback.jsx";
 
 const linkClass = ({ isActive }) =>
   `relative text-sm font-medium transition hover:text-midnight ${
@@ -30,6 +34,15 @@ export default function App() {
             <NavLink to="/" className={linkClass}>
               Home
             </NavLink>
+            <NavLink to="/book" className={linkClass}>
+              Book Service
+            </NavLink>
+            <NavLink to="/track" className={linkClass}>
+              Track Booking
+            </NavLink>
+            <NavLink to="/my-bookings" className={linkClass}>
+              My Bookings
+            </NavLink>
             <NavLink to="/about" className={linkClass}>
               About Us
             </NavLink>
@@ -49,6 +62,58 @@ export default function App() {
                 transition={{ duration: 0.35 }}
               >
                 <Home />
+              </motion.main>
+            }
+          />
+          <Route
+            path="/book"
+            element={
+              <motion.main
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                <BookService />
+              </motion.main>
+            }
+          />
+          <Route
+            path="/track"
+            element={
+              <motion.main
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                <TrackBooking />
+              </motion.main>
+            }
+          />
+          <Route
+            path="/my-bookings"
+            element={
+              <motion.main
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                <MyBookings />
+              </motion.main>
+            }
+          />
+          <Route
+            path="/auth/callback"
+            element={
+              <motion.main
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                <AuthCallback />
               </motion.main>
             }
           />
@@ -101,8 +166,8 @@ export default function App() {
           </svg>
         </a>
         <a
-          href="/about"
-          aria-label="Go to about page"
+          href="/book"
+          aria-label="Go to booking page"
           className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-white/60 bg-gradient-to-br from-mint/50 via-white to-sunrise/60 text-midnight shadow-glow backdrop-blur transition hover:-translate-y-1 hover:shadow-lg"
         >
           <svg
@@ -114,8 +179,28 @@ export default function App() {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <circle cx="12" cy="8" r="3.5" />
-            <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+            <path d="M4 6h16" />
+            <path d="M4 10h16" />
+            <path d="M4 14h8" />
+            <path d="M4 18h8" />
+            <path d="M16 14l2 2 3-3" />
+          </svg>
+        </a>
+        <a
+          href="/track"
+          aria-label="Go to tracking page"
+          className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-white/60 bg-gradient-to-br from-blush/40 via-white to-sunrise/50 text-midnight shadow-glow backdrop-blur transition hover:-translate-y-1 hover:shadow-lg"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M3 12h3l2 6 4-12 2 6h7" />
           </svg>
         </a>
       </div>

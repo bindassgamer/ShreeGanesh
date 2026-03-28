@@ -1,19 +1,19 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
+import { apiFetch } from "../lib/api";
 
 const initialState = {
   address: "",
   email: "",
   phone: "",
   brand: "",
-  description: "",
+  description: ""
 };
 
 export default function RepairForm({ category }) {
   const [formData, setFormData] = useState(initialState);
   const [status, setStatus] = useState({ type: "idle", message: "" });
   const [loading, setLoading] = useState(false);
-  const apiBaseUrl ="https://shree-backend-eta.vercel.app"; // use for local run|| "http://localhost:3000"
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,28 +31,20 @@ export default function RepairForm({ category }) {
     setStatus({ type: "idle", message: "" });
 
     try {
-      const response = await fetch(`${apiBaseUrl}/api/tickets`, {
+      const payload = await apiFetch("/api/tickets", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...formData, category }),
+        body: JSON.stringify({ ...formData, category })
       });
-
-      const payload = await response.json();
-      if (!response.ok) {
-        throw new Error(payload?.message || "Unable to submit ticket.");
-      }
 
       setStatus({
         type: "success",
-        message: "Thanks! Your request is in. We will be back to you soon.",
+        message: payload?.message || "Thanks! Your request is in. We will be back to you soon."
       });
       setFormData(initialState);
     } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message: error.message || "Something went wrong. Please try again."
       });
     } finally {
       setLoading(false);
@@ -69,14 +61,10 @@ export default function RepairForm({ category }) {
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          {/* <p className="text-sm uppercase tracking-[0.2em] text-slate-500">Selected Category</p> */}
           <h3 className="text-2xl font-semibold text-midnight">
             {category || "Choose a device type"}
           </h3>
         </div>
-        {/* <div className="rounded-full bg-midnight px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white">
-          Fast Response
-        </div> */}
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -164,3 +152,4 @@ export default function RepairForm({ category }) {
     </motion.form>
   );
 }
+

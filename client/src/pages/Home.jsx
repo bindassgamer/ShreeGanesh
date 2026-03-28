@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import CategoryCards from "../components/CategoryCards.jsx";
 import RepairForm from "../components/RepairForm.jsx";
 
@@ -29,7 +30,6 @@ export default function Home() {
       >
         <div id="home" className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            {/* <p className="text-sm uppercase tracking-[0.3em] text-slate-500">ApplianceCare Hub</p> */}
             <h1 className="mt-4 text-4xl font-semibold text-midnight md:text-5xl">
               Repair support for laptops, desktops, and printers.
             </h1>
@@ -37,6 +37,20 @@ export default function Home() {
               Submit your device issue in minutes. Our technicians review every ticket and reach
               out with next steps within one business day.
             </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                to="/book"
+                className="inline-flex items-center justify-center rounded-full bg-midnight px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-slateink"
+              >
+                Book a service
+              </Link>
+              <Link
+                to="/track"
+                className="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600 transition hover:border-slate-300 hover:text-slate-800"
+              >
+                Track booking
+              </Link>
+            </div>
           </div>
           <div className="rounded-3xl border border-white/70 bg-white/70 px-6 py-5 text-sm text-slate-600 shadow-glow backdrop-blur">
             <p className="font-semibold text-midnight">Service coverage</p>
@@ -48,7 +62,6 @@ export default function Home() {
       <section className="mt-10 sm:mt-12">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold text-midnight">Choose your device</h2>
-          {/* <span className="text-sm text-slate-500">3 quick categories</span> */}
         </div>
         <div className="mt-6">
           <CategoryCards selected={category} onSelect={handleCategorySelect} />
@@ -69,3 +82,4 @@ export default function Home() {
     </div>
   );
 }
+

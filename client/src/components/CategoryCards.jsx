@@ -53,3 +53,4 @@ export default function CategoryCards({ selected, onSelect }) {
     </div>
   );
 }
+
