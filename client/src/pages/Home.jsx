@@ -44,12 +44,12 @@ export default function Home() {
               >
                 Book a service
               </Link>
-              <Link
+              {/* <Link
                 to="/track"
                 className="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-600 transition hover:border-slate-300 hover:text-slate-800"
               >
                 Track booking
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="rounded-3xl border border-white/70 bg-white/70 px-6 py-5 text-sm text-slate-600 shadow-glow backdrop-blur">

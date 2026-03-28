@@ -34,7 +34,7 @@ export default function App() {
             <NavLink to="/" className={linkClass}>
               Home
             </NavLink>
-            <NavLink to="/book" className={linkClass}>
+            {/* <NavLink to="/book" className={linkClass}>
               Book Service
             </NavLink>
             <NavLink to="/track" className={linkClass}>
@@ -42,7 +42,7 @@ export default function App() {
             </NavLink>
             <NavLink to="/my-bookings" className={linkClass}>
               My Bookings
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/about" className={linkClass}>
               About Us
             </NavLink>
@@ -65,7 +65,7 @@ export default function App() {
               </motion.main>
             }
           />
-          <Route
+          {/* <Route
             path="/book"
             element={
               <motion.main
@@ -77,7 +77,7 @@ export default function App() {
                 <BookService />
               </motion.main>
             }
-          />
+          /> */}
           <Route
             path="/track"
             element={
@@ -91,7 +91,7 @@ export default function App() {
               </motion.main>
             }
           />
-          <Route
+          {/* <Route
             path="/my-bookings"
             element={
               <motion.main
@@ -103,8 +103,8 @@ export default function App() {
                 <MyBookings />
               </motion.main>
             }
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/auth/callback"
             element={
               <motion.main
@@ -116,7 +116,7 @@ export default function App() {
                 <AuthCallback />
               </motion.main>
             }
-          />
+          /> */}
           <Route
             path="/about"
             element={
@@ -165,7 +165,7 @@ export default function App() {
             <path d="M5 9.5V20a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1V9.5" />
           </svg>
         </a>
-        <a
+        {/* <a
           href="/book"
           aria-label="Go to booking page"
           className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-white/60 bg-gradient-to-br from-mint/50 via-white to-sunrise/60 text-midnight shadow-glow backdrop-blur transition hover:-translate-y-1 hover:shadow-lg"
@@ -185,8 +185,8 @@ export default function App() {
             <path d="M4 18h8" />
             <path d="M16 14l2 2 3-3" />
           </svg>
-        </a>
-        <a
+        </a> */}
+        {/* <a
           href="/track"
           aria-label="Go to tracking page"
           className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-white/60 bg-gradient-to-br from-blush/40 via-white to-sunrise/50 text-midnight shadow-glow backdrop-blur transition hover:-translate-y-1 hover:shadow-lg"
@@ -202,7 +202,7 @@ export default function App() {
           >
             <path d="M3 12h3l2 6 4-12 2 6h7" />
           </svg>
-        </a>
+        </a> */}
       </div>
     </div>
   );

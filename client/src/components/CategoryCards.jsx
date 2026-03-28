@@ -18,6 +18,12 @@ const categories = [
     title: "Printer Repair",
     description: "Paper jams, ink system care, driver setup, and wireless issues.",
     accent: "from-blush/20 via-white to-white"
+  },
+  {
+    id: "AC",
+    title: "AC Repair",
+    description: "Cooling issues, gas refills, and maintenance services.",
+    accent: "from-blue-200/20 via-white to-white"
   }
 ];
 
